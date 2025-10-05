@@ -64,7 +64,7 @@ def get_repo_description(repo) -> str:
 def get_repo_language(repo) -> str:
     """Returns the languages used in a repository if any."""
     log_info = f"There is not enough data for {get_repo_name(repo)} to generate languages used."
-    fallback = "Language"
+    fallback = "OwO"
     return _repo_val(repo.language, log_info, fallback)
 
 
