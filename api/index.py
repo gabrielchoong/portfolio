@@ -52,7 +52,11 @@ def get_projects() -> list[dict[str, Any] | Any]:
         project_list = []
 
         for repo in user.get_repos(sort="pushed", direction="desc"):
-            if repo_is_fork(repo):
+            if (
+                repo_is_fork(repo)
+                or get_repo_name(repo) == "gabrielchoong"
+                or get_repo_name(repo) == "portfolio"
+            ):
                 continue
 
             project = Project(
