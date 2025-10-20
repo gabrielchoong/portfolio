@@ -43,10 +43,11 @@ app.add_middleware(
 def get_projects() -> list[dict[str, Any] | Any]:
     """Exposes the projects from a GitHub account on `/api/projects` to be stylised and used by a frontend library"""
     try:
+        env_var = "GITHUB_ACCESS_TOKEN"
         config = dotenv_values()
 
         # Vercel uses the os module for accessing env variables
-        auth_token = os.getenv("GITHUB_ACCESS_TOKEN") or config.get("GITHUB_ACCESS_TOKEN")
+        auth_token = os.getenv(env_var) or config.get(env_var)
         user = github_auth(auth_token).get_user()
         project_list = []
 
