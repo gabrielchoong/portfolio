@@ -6,15 +6,13 @@ import "./App.css";
 
 const App = ({ appName }) => {
   const [projects, setProjects] = useState([]);
-
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/api/projects');
+        const response = await fetch("/api/projects");
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
