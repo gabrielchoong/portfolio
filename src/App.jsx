@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { Spinner, Text } from "@chakra-ui/react";
+import { Projects } from "./components/RepoRenderer";
+
 import "./App.css";
 
-function App() {
+const App = ({ appName }) => {
   const [projects, setProjects] = useState([]);
 
   const [loading, setLoading] = useState(true);
@@ -30,31 +33,19 @@ function App() {
   }, []);
 
   if (loading) {
-    return <div>Loading projects...</div>;
+    return (
+      <div>
+        <Spinner size="sm" />
+        <Text> Loading ...</Text>
+      </div>
+    );
   }
 
   if (error) {
     return <div>Error fetching projects: {error}</div>;
   }
 
-  return (
-    <div className="App">
-      <h1>My Portfolio</h1>
-      <div className="projects-list">
-        {projects.map((project) => (
-          <div key={project.id} className="project-card">
-            <h2>{project.name}</h2>
-            <p>
-              {project.description} | {project.language}
-            </p>
-            <a href={project.url} target="_blank" rel="noopener noreferrer">
-              View on GitHub
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+  return <Projects title={appName || "Default Title"} myRepos={projects} />;
+};
 
 export default App;
