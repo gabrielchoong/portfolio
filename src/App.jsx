@@ -38,9 +38,8 @@ const App = ({ appName }) => {
       </div>
     );
   }
-
   if (error) {
-    return <div>Error fetching projects: {error}</div>;
+    return <div>Error while fetching: {error}</div>;
   }
 
   return <Projects title={appName || "Default Title"} myRepos={projects} />;
