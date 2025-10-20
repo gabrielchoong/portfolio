@@ -10,7 +10,11 @@ def github_auth(auth_token: str | None) -> Github:
 
     ```python
     from dotenv import dotenv_values
-    personal_auth_token = dotenv_values()["YOUR_ENV_VAR"]
+    import os
+
+    env_var = "YOUR_ACCESS_TOKEN"
+    config = dotenv_values()
+    personal_auth_token = os.getenv(env_var) or config.get(env_var)
     github_user = github_auth(personal_auth_token).get_user()
     ```
 
