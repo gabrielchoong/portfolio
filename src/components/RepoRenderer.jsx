@@ -32,7 +32,10 @@ const RepoCard = ({ repoName, repoDescription, repoLanguage, repoLink }) => {
 
 const RepoGrid = ({ myRepos }) => {
   return (
-    <SimpleGrid columns={3} gap="40px">
+    <SimpleGrid
+      columns={{ base: 1, md: 2, lg: 3 }}
+      gap={{ base: "24px", md: "40px" }}
+    >
       {myRepos.map((repo) => (
         <RepoCard
           repoName={repo.name}
